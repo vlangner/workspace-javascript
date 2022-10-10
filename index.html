@@ -56,8 +56,6 @@
                 document.write(" Result is " + multiply);
                 document.write(" Result is " + divide);
             </script>
-
-
         </div>
 
         <div class="practice">
@@ -88,21 +86,23 @@
 
                     document.write(tablecode);
                 </script>
-
         </div>
 
         <div class="practice">
             <h1>Window and document object </h1>
             <p> Try alert, open, location, url </p>
             <script>
+                document.write(window.location.href);
 
+                // window.alert("Hello");
+                // window.location.href = "https://www.usca.edu/";
             </script>
 
         </div>
 
         <div class="practice">
             <h1> Get textcontent of an element </h1>
-            <p>Perform arithmetic operation on <span id="num1"> 4 </span> and <span id="num2">5 </span> </p>
+            <p>Perform arithmetic operation on <span id="num1"> 4 </span> and <span id="num2"> 5 </span> </p>
             <p>Result:
                 <script src="js/arith.js"></script>
             </p>
@@ -111,12 +111,26 @@
 
         <div class="practice">
             <h1> Get innerHTML of an elemnt</h1>
-            <p id="p1"> Paragraph Number One </p>
-            <p id="p2"> Paragraph Number two </p>
+            <p id="p1" onclick="changeit();"> Paragraph Number One </p>
+            <p id="p2" onmouseover="changeit2();" onmouseout="changeit3()"> Paragraph Number two </p>
             <p id="p3"> Paragraph Number three </p>
-            <p>Please write JavaScript code to change the content of each paragraph.​
+            <p>Please write JavaScript code to change the content of each paragraph.
             <p>
+                <script>
+                    // event handler
+                    function changeit(){
+                        document.getElementById('p1').textContent="I did it.";
+                        document.getElementById('myname').value = "I knew it";
+                    }
 
+                    function changeit2(){
+                        document.getElementById('p2').textContent="Complete";
+                    }
+
+                    function changeit3(){
+                        document.getElementById('p2').textContent="Paragraph Number two";
+                    }
+                </script>
 
         </div>
 
@@ -125,12 +139,38 @@
             <p> Please enter your numbers </p>
             <script>
                 function calculate() {
+                    var n1 = parseInt(document.getElementsByName('num1')[0].value);
+                    var n2 = parseInt(document.getElementsByName('num2')[0].value);
 
+                    //  debugging
+                    console.log("n1");
 
+                    // output
+                    var answer = n1 + n2;
+                    document.getElementById('result').textContent = "The answer is " + answer;
+                }
+
+                function calculate2(){
+                    var n3 = parseInt(document.getElementsByName('num3')[0].value);
+                    var n4 = parseInt(document.getElementsByName('num4')[0].value);
+
+                    // debugging
+                    console.log("n3");
+
+                    // output
+                    var answer2 = n1 - n2;
+                    document.getElementById('result').textContent = "The answer is " + answer2;
                 }
             </script>
-            <p> <input type="text" name="num1" /> + <input type="text" name="num2">
+            <p> 
+                <input type="text" name="num1" /> - <input type="text" name="num2">
                 <input type="button" value="=" onclick="calculate();">
+                <label id="result"> ? </label>
+            </p>
+
+            <p>
+                <input type="text" name="num3"> + <input type="text" name="num4">
+                <input type="button" value="=" onclick="calculate2()">
                 <label id="result"> ? </label>
             </p>
 
@@ -155,6 +195,16 @@
                     </label>
                 </p>
             </form>
+            <script>
+                //event handler
+                function welcomemessage(){
+                    window.alert("Works")
+                }
+
+                // event ---> event handler
+                var fE = document.getElementById('cName'); // input textbox
+                fE.addEventListener('blur', welcomemessage, false);
+            </script>
 
         </div>
 
