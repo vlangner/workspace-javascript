@@ -141,6 +141,9 @@
                 function calculate() {
                     var n1 = parseInt(document.getElementsByName('num1')[0].value);
                     var n2 = parseInt(document.getElementsByName('num2')[0].value);
+                    if(Number.isNaN(Number.parseFloat(n1, n2, n3, n4))){
+                        window.alert("Try it again. You should enter a number.")
+                    }
 
                     //  debugging
                     console.log("n1");
@@ -198,7 +201,10 @@
             <script>
                 //event handler
                 function welcomemessage(){
-                    window.alert("Works")
+                    // window.alert("Works")
+
+                    var name = document.getElementById('cName').value;
+                    document.getElementById('message').innerHTML = "Welcome <b>" + name + "</b>";
                 }
 
                 // event ---> event handler
@@ -212,7 +218,18 @@
             <h1> Practice - Calculate Square</h1>
             Calculating Square:
             <input type="text" id="num" placeholder="Type in a number"> <sup> 2 </sup> =
-            <label id="result"> ? </label>
+            <label id="resultsquare" onblur="square()"> ? </label>
+
+            <script>
+                function square(){
+                    var n = parseFloat(document.getElementById('num').value);
+                    var answer = n * n;
+                    document.getElementById('resultsquare').textContent = answer.toFixed(2);
+                }
+
+                var c = document.getElementById('num');
+                c.addEventListener('blur', square, false);
+            </script>
 
         </div>
 
@@ -226,8 +243,19 @@
 
             <input type="button" id="tryit" value="Click and Display"> 
 
-            <div id="message"> 
+            <div id="message1"> 
             </div>
+
+            <script>
+                // event
+                function toHTML(){
+                    var code = document.getElementById('code').value;
+                    document.getElementById('message1').innerHTML = code;
+                }
+
+                var bE = document.getElementById('tryit');
+                bE.addEventListener('click', toHTML, false);
+            </script>
 
 
         </div>
