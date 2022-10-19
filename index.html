@@ -372,7 +372,7 @@
             <p>
                 <input type="button" value="Check Premium">
             </p>
-            <p id="result">
+            <p id="resultSwitch">
 
             </p>
 
@@ -383,12 +383,41 @@
 
                     console.log(coverage);
 
+                    var age = document.getElementById("agegroup").selectedIndex;
+                    let agefactor = 0;
 
+                    switch(age){
+                        case 0:
+                            agefactor = 0.08;
+                            break;
+                        
+                        case 1:
+                            agefactor = 0.09;
+                            break;
+                        
+                        case 2:
+                            agefactor = 0.11;
+                            break;
+                        
+                        case 3:
+                            agefactor = 0.17;
+                            break;
+                    }
+
+                    var premium = 10 + ((agefactor * coverage)/1000);
+
+                    document.getElementById('resultSwitch').textContent = premium.toFixed(2);
+
+                    if(age == 0){
+                        document.querySelector('input[name = "coverage"]').animate([{transform: 'scale(0.2)'},{transform: 'scale(1.5)'}],{duration: 2000, fill: "forwards"});
+                    }else{
+                        this.animate([{transform: 'translate(0,0)'},{transform: 'translate(100px,0)'}],{duration: 2000, fill: "forwards"});
+                    }
+                    
                 }
 
                 var bE = document.querySelector('input[value = "Check Premium"]')
                 bE.addEventListener('click', checkPremium, false);
-
             </script>
 
         </div>
@@ -398,12 +427,29 @@
 
         <div class="practice">
             <h1>For Loop Practice 1 </h1>
-            <p> Display the square of numer 1... N </p>
+            <p> Display the square of number 1... N </p>
             <p> N = <input type="number" min="1" max="10" id="inputnumber1"> </p>
             <p>
-                <input type="button" value="Click for Square">
+                <input type="button" id = "dosquare" value="Click for Square" onclick="calcSquare()">
             </p>
+            <p id = "resultsquare"></p>
 
+            <script>
+                function calcSquare(){
+                    var n = parseInt(document.getElementById('inputnumber1').value);
+                    var square = 0;
+
+                    for(var i = 1; i < n + 1; i++){
+
+                        square = n * n;
+
+                        document.getElementById('resultsquare').innerHTML = sum;
+
+                    }
+                }
+
+                document.getElementById('dosquare').addEventListener('click', calcSquare, false);
+            </script>
         </div>
 
 
