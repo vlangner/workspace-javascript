@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
 
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/main-old.css">
     <!-- Jquery library   ---->
     <script src="https://code.jquery.com/jquery-3.5.1.js"
         integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
@@ -551,6 +551,13 @@
                     var num = Math.floor(Math.random() * 6 + 1);
 
                     stats[num - 1]++;
+                    console.log(stats);
+
+                    for(var i = 0; i < stats.length; i++){
+                        console.log(stats[i]);
+
+                        document.getElementById('r' + num).textContent = stats[i].toString();
+                    }
 
                     document.getElementById('dice').setAttribute('src', "img/die" + num + ".png")
                 }
@@ -578,7 +585,21 @@
                 <img src="img/usca5.jpg" alt="usca">
             </div>
 			<script>
-				
+			    // automatic event 
+                //setInterval(changePicture, 5000);
+                var index = 0;
+                var imglist = document.querySelectorAll(".img-container-hide");
+               // imglist[0].setAttribute("class", "img-container");
+
+                // event handler
+                function changePicture(){
+                    imglist[index].setAttribute("class", "img-container-hide");
+                    index++;
+                    index = index % imglist.length;
+                    imglist[index].setAttribute("class", "img-container");
+                }
+
+
 			</script>
 
 
@@ -631,8 +652,8 @@
 
 
     </div>
-    <script src="script.js"> </script>
-    <script src="js/practice.js"></script>
+    <!--<script src="script.js"> </script>
+    <script src="js/practice.js"></script>-->
 
 
 </body>
