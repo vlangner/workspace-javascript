@@ -7,6 +7,37 @@
     <!-- Jquery library   ---->
     <script src="https://code.jquery.com/jquery-3.5.1.js"
         integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    
+    <script>
+        $(document).ready(function(){
+            $('body').hide().fadeIn(3000);
+            /*
+            $('h1').click(function(){
+                window.alert("you clicked h1");
+            });
+            
+            $('p').mouseover(function(){
+                $(this).slideUp();
+            });
+            */
+           $('p').hide();
+
+           $('h1').click(function(){
+                $(this).parent().children('p').slideToggle();
+           });
+
+           $('input').each(function(){
+                var id = $(this).attr('id');
+                console.log(id);
+           });
+
+           // get images from this page
+           $('img').each(function(){
+                var image = $(this).attr('src');
+                console.log(image);
+           });
+        });
+    </script>
 
 
 </head>
@@ -18,8 +49,7 @@
         </div>
 
         <div class="practice">
-            <h1>Hello world in JavaScript
-            </h1>
+            <h1>Hello world in JavaScript</h1>
             <p>
                 Please display a hello world message in JavaScript. 
                 <script>
